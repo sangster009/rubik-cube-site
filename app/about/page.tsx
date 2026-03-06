@@ -148,7 +148,7 @@ export default function AboutPage() {
                       >
                         <td className="px-3 py-2">
                           <span className="font-medium">{row.event}</span>
-                          {row.note && (
+                          {"note" in row && row.note && (
                             <p className="text-xs text-muted-foreground">
                               {row.note}
                             </p>
@@ -158,7 +158,7 @@ export default function AboutPage() {
                           {row.single}
                         </td>
                         <td className="px-3 py-2 text-right tabular-nums">
-                          {row.average ?? "–"}
+                          {"average" in row && row.average ? row.average : "–"}
                         </td>
                       </tr>
                     ))}

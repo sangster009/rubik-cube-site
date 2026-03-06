@@ -33,17 +33,20 @@ export async function resolveChannelId(idOrHandle: string): Promise<string> {
   const cached = channelIdCache.get(cacheKey);
   if (cached) return cached;
 
-  const url = `https://www.youtube.com/@${encodeURIComponent(handle)}`;
-  const res = await fetch(url, {
-    next: { revalidate: 86400 },
-    headers: { "User-Agent": "Mozilla/5.0 (compatible; RubikSolve/1.0)" },
-  });
-  const html = await res.text();
-  // ytInitialData or inline JSON often contains "channelId":"UC..."
-  const match = html.match(/"channelId"\s*:\s*"(UC[\w-]{22})"/) ?? html.match(/"externalId"\s*:\s*"(UC[\w-]{22})"/);
-  const resolved = match ? match[1]! : trimmed;
-  if (resolved !== trimmed) channelIdCache.set(cacheKey, resolved);
-  return resolved;
+  try {
+    const url = `https://www.youtube.com/@${encodeURIComponent(handle)}`;
+    const res = await fetch(url, {
+      next: { revalidate: 86400 },
+      headers: { "User-Agent": "Mozilla/5.0 (compatible; RubikSolve/1.0)" },
+    });
+    const html = await res.text();
+    const match = html.match(/"channelId"\s*:\s*"(UC[\w-]{22})"/) ?? html.match(/"externalId"\s*:\s*"(UC[\w-]{22})"/);
+    const resolved = match ? match[1]! : trimmed;
+    if (resolved !== trimmed) channelIdCache.set(cacheKey, resolved);
+    return resolved;
+  } catch {
+    return trimmed;
+  }
 }
 
 function parseRssEntry(entryXml: string): ChannelVideo | null {
@@ -101,21 +104,25 @@ export async function getChannelVideos(
   channelIdOrHandle: string,
   limit = 12
 ): Promise<ChannelVideo[]> {
-  const channelId = await resolveChannelId(channelIdOrHandle);
+  try {
+    const channelId = await resolveChannelId(channelIdOrHandle);
 
-  const cached = cache.get(channelId);
-  if (cached && Date.now() - cached.fetchedAt < CACHE_MS) {
-    return cached.videos.slice(0, limit);
+    const cached = cache.get(channelId);
+    if (cached && Date.now() - cached.fetchedAt < CACHE_MS) {
+      return cached.videos.slice(0, limit);
+    }
+
+    const url = `${RSS_URL}?channel_id=${encodeURIComponent(channelId)}`;
+    const res = await fetch(url, {
+      next: { revalidate: 3600 },
+      headers: { "User-Agent": "Mozilla/5.0 (compatible; RubikSolve/1.0)" },
+    });
+    if (!res.ok) return [];
+    const xml = await res.text();
+    const videos = parseRssFeed(xml);
+    cache.set(channelId, { videos, fetchedAt: Date.now() });
+    return videos.slice(0, limit);
+  } catch {
+    return [];
   }
-
-  const url = `${RSS_URL}?channel_id=${encodeURIComponent(channelId)}`;
-  const res = await fetch(url, {
-    next: { revalidate: 3600 },
-    headers: { "User-Agent": "Mozilla/5.0 (compatible; RubikSolve/1.0)" },
-  });
-  if (!res.ok) return [];
-  const xml = await res.text();
-  const videos = parseRssFeed(xml);
-  cache.set(channelId, { videos, fetchedAt: Date.now() });
-  return videos.slice(0, limit);
 }

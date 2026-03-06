@@ -86,11 +86,28 @@ The feed is at **`/feed.xml`**. Set `NEXT_PUBLIC_SITE_URL` so item links point t
 - **3×3 OH / other cubes**: Add entries in `videos.json` with `cubeType: "3x3-oh"` (or `"4x4"`). You can later add filtering on the Weekly page and new solve guides under `content/solve/3x3-oh/`, etc.
 - **New solve methods**: Add `content/solve/<cube>/steps.json` and a page at `app/solve/<cube>/page.tsx` using `getSolveSteps("<cube>")`.
 
-## Build & deploy
+## Go live (deploy to Vercel)
+
+1. **Push your code to GitHub** (you already have `https://github.com/sangster009/rubik-cube-site`).
+
+2. **Deploy on Vercel**
+   - Go to [vercel.com](https://vercel.com) and sign in (e.g. with GitHub).
+   - Click **Add New** → **Project**, import **sangster009/rubik-cube-site**.
+   - Leave **Framework Preset** as Next.js and **Root Directory** as `.` → **Deploy**.
+   - Vercel will build and give you a URL like `rubik-cube-site.vercel.app`.
+
+3. **Set environment variables** (Vercel project → **Settings** → **Environment Variables**). Add what you use locally, at least:
+   - `NEXT_PUBLIC_SITE_URL` = your live URL (e.g. `https://rubik-cube-site.vercel.app` or your custom domain).
+   - For email subscription: `RESEND_API_KEY` (and optionally `RESEND_AUDIENCE_ID`, `RESEND_FROM`).
+   - For YouTube videos: `NEXT_PUBLIC_YOUTUBE_CHANNEL_ID=@mikayeo` (or your channel ID).
+
+4. **Redeploy** after adding env vars (Deployments → ⋮ on latest → **Redeploy**), or trigger a new deploy by pushing to `main`.
+
+5. **Optional: custom domain** – in Vercel project **Settings** → **Domains**, add your domain and follow the DNS steps.
+
+## Build & run locally
 
 ```bash
 npm run build
 npm start
 ```
-
-Deploy to Vercel (or any Node host); add the env vars above for production.
