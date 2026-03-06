@@ -1,0 +1,26 @@
+[
+  {
+    "order": 1,
+    "title": "White Cross",
+    "body": "Solve the white cross on the bottom. Match each white edge to its center, then insert. No algorithm needed yet—focus on intuition.",
+    "youtubeId": null
+  },
+  {
+    "order": 2,
+    "title": "First Two Layers (F2L)",
+    "body": "Pair corner and edge pieces and insert them into the correct slots. Example: R U R' U' inserts a pair. Practice look-ahead to reduce pauses.",
+    "youtubeId": null
+  },
+  {
+    "order": 3,
+    "title": "OLL - Orient Last Layer",
+    "body": "Make the top face one color. Beginners can use the 2-look method: first orient edges (e.g. F R U R' U' F'), then corners. Algorithm example: R U2 R' U' R U' R' (for one case).",
+    "youtubeId": null
+  },
+  {
+    "order": 4,
+    "title": "PLL - Permute Last Layer",
+    "body": "Position the last-layer pieces correctly. Common algs: Ua perm R U' R U R U R U' R' U' R2, Ub perm R2 U R U R' U' R' U' R' U R'. After this, the cube is solved!",
+    "youtubeId": null
+  }
+]

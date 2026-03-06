@@ -1,0 +1,42 @@
+[
+  {
+    "id": "1",
+    "slug": "oll-fish-algorithm",
+    "title": "OLL Fish Algorithm - Fast and Easy",
+    "youtubeId": "wV2x8uQGIKU",
+    "publishedAt": "2025-03-01T12:00:00.000Z",
+    "cubeType": "3x3",
+    "description": "Learn the fish OLL case with this simple algorithm. Great for beginners moving into full OLL.",
+    "stepLabel": "OLL"
+  },
+  {
+    "id": "2",
+    "slug": "pll-ua-perm",
+    "title": "PLL Ua Perm - One of the Most Used",
+    "youtubeId": "P8Rq2ojtKJM",
+    "publishedAt": "2025-02-24T12:00:00.000Z",
+    "cubeType": "3x3",
+    "description": "The Ua permutation is essential for PLL. Here's how to execute it smoothly.",
+    "stepLabel": "PLL"
+  },
+  {
+    "id": "3",
+    "slug": "f2l-pair-from-slot",
+    "title": "F2L: Pair Already in Slot",
+    "youtubeId": "MS_TdHBcvdc",
+    "publishedAt": "2025-02-17T12:00:00.000Z",
+    "cubeType": "3x3",
+    "description": "When your pair is already in the slot but misoriented - the quick fix.",
+    "stepLabel": "F2L"
+  },
+  {
+    "id": "4",
+    "slug": "weekly-algorithm-4",
+    "title": "Weekly Algorithm #4",
+    "youtubeId": "bkVnBcyVnE4",
+    "publishedAt": "2025-02-10T12:00:00.000Z",
+    "cubeType": "3x3",
+    "description": "Another algorithm from Micah's weekly series.",
+    "stepLabel": "3x3"
+  }
+]
