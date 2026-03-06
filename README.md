@@ -11,6 +11,8 @@ A mobile-friendly site to learn the 3×3 Rubik's cube step-by-step and follow **
 
 ## Getting started
 
+Run the dev server **from this project root** (`rubik-cube-site`) so routes resolve correctly:
+
 ```bash
 npm install
 npm run dev
@@ -42,11 +44,38 @@ Edit **`content/solve/3x3/steps.json`** to change or add steps. Each step has:
 
 ## Subscription (email)
 
-1. Copy `.env.example` to `.env`.
-2. Add your **Resend** API key: [resend.com](https://resend.com). Optionally set `RESEND_AUDIENCE_ID` to add subscribers to an audience.
-3. Set `NEXT_PUBLIC_SITE_URL` to your production URL (for RSS links).
+Email subscription uses [Resend](https://resend.com). Configure it as follows:
 
-Without `RESEND_API_KEY`, the subscribe form will return a “not configured” error when submitting.
+1. **Copy env**
+   - Copy `.env.example` to `.env`.
+
+2. **Resend API key (required for subscription)**
+   - Sign up at [resend.com](https://resend.com) and create an API key.
+   - In `.env` set:
+     - `RESEND_API_KEY=re_xxxxxxxx` (your key).
+
+3. **Optional: Resend audience**
+   - To store subscribers in a Resend audience (for broadcasts), create an audience in the Resend dashboard and set:
+     - `RESEND_AUDIENCE_ID=xxxxxxxx`.
+
+4. **Optional: Notification when someone subscribes**
+   - You are notified at `sangbackyeo@gmail.com` on each new subscription. The notification is sent with the same Resend key.
+   - By default the “From” address is Resend’s test sender. To use your own domain, add and verify it in Resend, then set:
+     - `RESEND_FROM=Cubing with Micah <notify@yourdomain.com>`.
+
+5. **Site URL**
+   - Set `NEXT_PUBLIC_SITE_URL` to your production URL (e.g. `https://yoursite.com`) for RSS and links.
+
+Without `RESEND_API_KEY`, the subscribe form returns “Email subscription is not configured”.
+
+## Latest from Micah (YouTube channel)
+
+To show your **YouTube channel’s recent uploads** in the “Latest from Micah” section instead of the static list:
+
+1. Add to `.env`: **`NEXT_PUBLIC_YOUTUBE_CHANNEL_ID=UCxxxxxxxxxxxxxxxxxx`** (or `YOUTUBE_CHANNEL_ID`).
+2. Find your channel ID: open your YouTube channel page → View Page Source → search for `browse_id` and copy the value, or use the ID from the URL `youtube.com/channel/UC...`.
+
+Videos are loaded from YouTube’s public RSS feed (no API key). The list is cached for 1 hour. If the env var is not set, the section falls back to **`content/weekly/videos.json`**.
 
 ## RSS
 

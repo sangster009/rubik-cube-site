@@ -12,12 +12,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { ExternalLink, Trophy, Target, Calendar } from "lucide-react";
 
-// Use a local photo: add public/micah.jpg and set NEXT_PUBLIC_MICAH_IMAGE=/micah.jpg, or leave unset for initials avatar
-const MICAH_IMAGE =
-  typeof process.env.NEXT_PUBLIC_MICAH_IMAGE === "string" &&
-  process.env.NEXT_PUBLIC_MICAH_IMAGE.trim() !== ""
-    ? process.env.NEXT_PUBLIC_MICAH_IMAGE
-    : "https://ui-avatars.com/api/?name=Micah+Yeo&size=320&background=22c55e&color=fff&bold=true&font-size=0.45";
+const MICAH_IMAGE = "/micah-mug.png";
 
 const WCA_PROFILE = "https://www.worldcubeassociation.org/persons/2022YEOM01";
 
@@ -50,7 +45,7 @@ const RECORDS = [
 ] as const;
 
 export const metadata = {
-  title: "About Micah | SCM",
+  title: "About Micah | Cubing with Micah",
   description:
     "Micah Yeo – WCA speedcuber (2022YEOM01). US competitor with 70+ competitions, sub-7 3×3 average, and top rankings in 3×3 One-Handed.",
 };
@@ -60,13 +55,13 @@ export default function AboutPage() {
     <div className="container px-4 py-8 md:py-12">
       <div className="mx-auto max-w-2xl">
         <div className="flex flex-col items-center text-center">
-          <div className="relative size-40 shrink-0 sm:size-48">
+          <div className="relative size-[6.5rem] shrink-0 sm:size-[7.8rem]">
             <Image
               src={MICAH_IMAGE}
               alt="Micah Yeo"
               fill
               className="rounded-full object-cover ring-4 ring-primary/10 shadow-lg"
-              sizes="(max-width: 640px) 160px, 192px"
+              sizes="(max-width: 640px) 104px, 125px"
               priority
             />
           </div>
@@ -74,7 +69,7 @@ export default function AboutPage() {
             About Micah
           </h1>
           <p className="mt-2 text-muted-foreground">
-            Speedcuber, algorithm creator, and the voice behind SCM&apos;s weekly
+            Speedcuber, algorithm creator, and the voice behind Cubing with Micah&apos;s weekly
             tutorials.
           </p>
         </div>

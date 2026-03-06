@@ -7,7 +7,7 @@ import { toast } from "sonner";
 
 interface SubscribeFormProps {
   className?: string;
-  variant?: "inline" | "stacked";
+  variant?: "inline" | "stacked" | "footer";
 }
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -54,7 +54,9 @@ export function SubscribeForm({
   }
 
   if (success) {
-    return (
+    return variant === "footer" ? (
+      <p className="text-xs text-muted-foreground">You&apos;re subscribed.</p>
+    ) : (
       <p className="text-sm text-muted-foreground">
         You&apos;re subscribed. We&apos;ll email you when there&apos;s new content. You can also follow via{" "}
         <a href="/feed.xml" className="text-primary underline underline-offset-2">RSS</a>.
@@ -64,6 +66,7 @@ export function SubscribeForm({
 
   const isStacked = variant === "stacked";
   const isInline = variant === "inline";
+  const isFooter = variant === "footer";
   return (
     <form
       onSubmit={handleSubmit}
@@ -72,11 +75,13 @@ export function SubscribeForm({
     >
       <div
         className={
-          isStacked
-            ? "flex flex-col gap-2"
-            : isInline
-              ? "flex flex-row gap-2"
-              : "flex flex-col sm:flex-row gap-2 sm:gap-2"
+          isFooter
+            ? "flex gap-2"
+            : isStacked
+              ? "flex flex-col gap-2"
+              : isInline
+                ? "flex flex-row gap-2"
+                : "flex flex-col sm:flex-row gap-2 sm:gap-2"
         }
       >
         <Input
@@ -85,17 +90,31 @@ export function SubscribeForm({
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           disabled={loading}
-          className={isInline ? "w-1/2 min-w-0 shrink" : "min-w-0"}
+          className={
+            isFooter
+              ? "h-8 w-44 text-sm"
+              : isInline
+                ? "w-1/2 min-w-0 shrink"
+                : "min-w-0"
+          }
           aria-label="Email address"
         />
-        <Button type="submit" variant="secondary" disabled={loading} className="shrink-0">
-          {loading ? "Subscribing…" : "Subscribe"}
+        <Button
+          type="submit"
+          variant={isFooter ? "default" : "secondary"}
+          size={isFooter ? "sm" : "default"}
+          disabled={loading}
+          className={isFooter ? "h-8 shrink-0 px-3 text-sm" : "shrink-0"}
+        >
+          {loading ? "…" : "Subscribe"}
         </Button>
       </div>
-      <p className="mt-2 text-xs text-muted-foreground">
-        Get notified when Micah posts new algorithms. Or use the{" "}
-        <a href="/feed.xml" className="text-primary underline underline-offset-2">RSS feed</a>.
-      </p>
+      {!isFooter && (
+        <p className="mt-2 text-xs text-muted-foreground">
+          Get notified when Micah posts new algorithms. Or use the{" "}
+          <a href="/feed.xml" className="text-primary underline underline-offset-2">RSS feed</a>.
+        </p>
+      )}
     </form>
   );
 }

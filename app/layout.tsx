@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SCM",
+  title: "Cubing with Micah",
   description:
     "Learn to solve the 3×3 Rubik's cube step by step. Get weekly algorithms from Micah and subscribe for new content.",
 };
@@ -33,7 +33,7 @@ export default function RootLayout({
       >
         <Providers>
           <Nav />
-          <main className="flex-1">{children}</main>
+          <main className="flex flex-1 w-full flex-col items-center">{children}</main>
           <Footer />
         </Providers>
       </body>

@@ -38,5 +38,85 @@
     "cubeType": "3x3",
     "description": "Another algorithm from Micah's weekly series.",
     "stepLabel": "3x3"
+  },
+  {
+    "id": "5",
+    "slug": "cross-and-f2l-overview",
+    "title": "Cross and F2L Overview",
+    "youtubeId": "dQw4w9WgXcQ",
+    "publishedAt": "2025-02-03T12:00:00.000Z",
+    "cubeType": "3x3",
+    "description": "Building a fast cross and efficient F2L pairs.",
+    "stepLabel": "F2L"
+  },
+  {
+    "id": "6",
+    "slug": "pll-ub-perm",
+    "title": "PLL Ub Perm",
+    "youtubeId": "dQw4w9WgXcR",
+    "publishedAt": "2025-01-27T12:00:00.000Z",
+    "cubeType": "3x3",
+    "description": "The Ub permutation for PLL.",
+    "stepLabel": "PLL"
+  },
+  {
+    "id": "7",
+    "slug": "3x3-oh-basics",
+    "title": "3×3 One-Handed Basics",
+    "youtubeId": "dQw4w9WgXcS",
+    "publishedAt": "2025-01-20T12:00:00.000Z",
+    "cubeType": "3x3 OH",
+    "description": "Getting started with one-handed solving.",
+    "stepLabel": "3x3 OH"
+  },
+  {
+    "id": "8",
+    "slug": "oll-t-shape",
+    "title": "OLL T-Shape",
+    "youtubeId": "dQw4w9WgXcT",
+    "publishedAt": "2025-01-13T12:00:00.000Z",
+    "cubeType": "3x3",
+    "description": "The T-shaped OLL case and algorithm.",
+    "stepLabel": "OLL"
+  },
+  {
+    "id": "9",
+    "slug": "f2l-slot-tricks",
+    "title": "F2L Slot Tricks",
+    "youtubeId": "dQw4w9WgXcU",
+    "publishedAt": "2025-01-06T12:00:00.000Z",
+    "cubeType": "3x3",
+    "description": "Useful tricks when pairs are in the wrong slot.",
+    "stepLabel": "F2L"
+  },
+  {
+    "id": "10",
+    "slug": "pll-h-perm",
+    "title": "PLL H Perm",
+    "youtubeId": "dQw4w9WgXcV",
+    "publishedAt": "2024-12-30T12:00:00.000Z",
+    "cubeType": "3x3",
+    "description": "The H permutation - edges only.",
+    "stepLabel": "PLL"
+  },
+  {
+    "id": "11",
+    "slug": "winter-solve-session",
+    "title": "Winter Solve Session",
+    "youtubeId": "dQw4w9WgXcW",
+    "publishedAt": "2024-12-23T12:00:00.000Z",
+    "cubeType": "3x3",
+    "description": "Casual solves and tips from a winter practice session.",
+    "stepLabel": "3x3"
+  },
+  {
+    "id": "12",
+    "slug": "oll-l-shape",
+    "title": "OLL L-Shape",
+    "youtubeId": "dQw4w9WgXcX",
+    "publishedAt": "2024-12-16T12:00:00.000Z",
+    "cubeType": "3x3",
+    "description": "The L-shaped OLL and how to recognize it.",
+    "stepLabel": "OLL"
   }
 ]

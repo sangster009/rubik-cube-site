@@ -1,30 +1,34 @@
-import { getWeeklyVideos } from "@/lib/content";
-import { VideoCard } from "@/components/video-card";
+import { getChannelVideos } from "@/lib/youtube";
+import { VideoListLoadMore } from "@/components/video-list-load-more";
 
 export const metadata = {
-  title: "Weekly Algorithms | SCM",
-  description: "Weekly Rubik's cube algorithm videos from Micah. 3×3 and more.",
+  title: "YouTube Videos | Cubing with Micah",
+  description: "New videos from Micah, 3×3, 3×3 OH and more.",
 };
 
-export default function WeeklyPage() {
-  const videos = getWeeklyVideos();
+const DEFAULT_CHANNEL = "@mikayeo";
+
+export default async function WeeklyPage() {
+  const channelId =
+    process.env.NEXT_PUBLIC_YOUTUBE_CHANNEL_ID ||
+    process.env.YOUTUBE_CHANNEL_ID ||
+    DEFAULT_CHANNEL;
+
+  const videos = await getChannelVideos(channelId, 50);
 
   return (
     <div className="container px-4 py-8">
       <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">
-        Weekly algorithms
+        YouTube Videos
       </h1>
       <p className="mt-2 text-muted-foreground">
-        New algorithm videos from Micah, weekly. 3×3 now; 3×3 OH and more coming.
+        New videos from Micah, 3×3, 3×3 OH and more.
       </p>
 
-      <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {videos.map((video) => (
-          <li key={video.id}>
-            <VideoCard video={video} />
-          </li>
-        ))}
-      </ul>
+      <VideoListLoadMore
+        videos={videos}
+        useYouTubeLinks={true}
+      />
     </div>
   );
 }

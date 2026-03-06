@@ -3,7 +3,7 @@ import { SubscribeForm } from "@/components/subscribe-form";
 import { Button } from "@/components/ui/button";
 
 export const metadata = {
-  title: "Subscribe | SCM",
+  title: "Subscribe | Cubing with Micah",
   description:
     "Subscribe by email or RSS to get notified when Micah posts new Rubik's cube algorithms.",
 };

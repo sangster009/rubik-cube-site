@@ -16,9 +16,9 @@ export async function generateMetadata({
 }) {
   const { slug } = await params;
   const video = getWeeklyVideoBySlug(slug);
-  if (!video) return { title: "Video | SCM" };
+  if (!video) return { title: "Video | Cubing with Micah" };
   return {
-    title: `${video.title} | SCM`,
+    title: `${video.title} | Cubing with Micah`,
     description: video.description ?? undefined,
   };
 }
@@ -44,7 +44,7 @@ export default async function WeeklySlugPage({
     <div className="container px-4 py-8">
       <div className="mx-auto max-w-3xl">
         <Button asChild variant="ghost" size="sm" className="mb-6 -ml-2">
-          <Link href="/weekly">← Weekly</Link>
+          <Link href="/weekly">← Videos</Link>
         </Button>
 
         <div className="aspect-video w-full overflow-hidden rounded-lg border bg-muted">
@@ -80,7 +80,7 @@ export default async function WeeklySlugPage({
 
         <div className="mt-8">
           <Button asChild variant="outline">
-            <Link href="/weekly">More weekly algorithms</Link>
+            <Link href="/weekly">More videos</Link>
           </Button>
         </div>
       </div>

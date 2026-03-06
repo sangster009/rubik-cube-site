@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export const metadata = {
-  title: "Solve 3×3 | SCM",
+  title: "Solve 3×3 | Cubing with Micah",
   description: "Step-by-step guide to solve the 3×3 Rubik's cube: cross, F2L, OLL, PLL.",
 };
 

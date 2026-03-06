@@ -21,7 +21,22 @@ export interface SolveStep {
   youtubeId: string | null;
 }
 
-const CONTENT_DIR = join(process.cwd(), "content");
+function resolveContentDir(): string {
+  const fromCwd = join(process.cwd(), "content");
+  const fromParent = join(process.cwd(), "rubik-cube-site", "content");
+  try {
+    readFileSync(join(fromCwd, "weekly", "videos.json"), "utf-8");
+    return fromCwd;
+  } catch {
+    try {
+      readFileSync(join(fromParent, "weekly", "videos.json"), "utf-8");
+      return fromParent;
+    } catch {
+      return fromCwd;
+    }
+  }
+}
+const CONTENT_DIR = resolveContentDir();
 
 function getContentPath(...segments: string[]) {
   return join(CONTENT_DIR, ...segments);
