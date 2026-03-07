@@ -1,10 +1,20 @@
+"use client";
+
 import Link from "next/link";
+import { Menu } from "lucide-react";
 import {
   NavigationMenu,
   NavigationMenuList,
   NavigationMenuItem,
   NavigationMenuLink,
 } from "@/components/ui/navigation-menu";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Logo } from "@/components/logo";
 
@@ -24,7 +34,9 @@ export function Nav() {
           <Logo size={28} className="text-primary" />
           <span className="sr-only sm:not-sr-only">Cubing with Micah</span>
         </Link>
-        <NavigationMenu className="max-w-none">
+
+        {/* Desktop nav */}
+        <NavigationMenu className="max-w-none hidden md:flex">
           <NavigationMenuList className="gap-1">
             {navItems.map((item) => (
               <NavigationMenuItem key={item.href}>
@@ -44,6 +56,36 @@ export function Nav() {
             ))}
           </NavigationMenuList>
         </NavigationMenu>
+
+        {/* Mobile hamburger menu */}
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="md:hidden"
+              aria-label="Open menu"
+            >
+              <Menu className="size-5" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent
+            align="end"
+            side="bottom"
+            className="w-[min(calc(100vw-2rem),320px)] rounded-lg p-2"
+          >
+            {navItems.map((item) => (
+              <DropdownMenuItem key={item.href} asChild>
+                <Link
+                  href={item.href}
+                  className="flex w-full items-center rounded-md px-3 py-2.5 text-sm font-medium hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                >
+                  {item.label}
+                </Link>
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     </header>
   );
