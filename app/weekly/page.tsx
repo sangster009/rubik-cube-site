@@ -2,7 +2,7 @@ import { getChannelVideos } from "@/lib/youtube";
 import { VideoListLoadMore } from "@/components/video-list-load-more";
 
 export const metadata = {
-  title: "YouTube Videos | Cubing with Micah",
+  title: "Youtube Clips | Cubing with Micah",
   description: "New videos from Micah, 3×3, 3×3 OH and more.",
 };
 
@@ -19,7 +19,7 @@ export default async function WeeklyPage() {
   return (
     <div className="container px-4 py-8">
       <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">
-        YouTube Videos
+        Youtube Clips
       </h1>
       <p className="mt-2 text-muted-foreground">
         New videos from Micah, 3×3, 3×3 OH and more.

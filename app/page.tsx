@@ -35,7 +35,7 @@ export default async function Home() {
             <Link href="/solve/3x3">Start solving 3×3</Link>
           </Button>
           <Button asChild variant="outline" size="lg">
-            <Link href="/weekly">Videos</Link>
+            <Link href="/weekly">Youtube Clips</Link>
           </Button>
         </div>
       </section>

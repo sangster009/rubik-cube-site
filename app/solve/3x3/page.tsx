@@ -60,7 +60,7 @@ export default function Solve3x3Page() {
 
         <div className="mt-12 flex flex-wrap gap-4">
           <Button asChild variant="outline">
-            <Link href="/weekly">Watch weekly algorithms</Link>
+            <Link href="/weekly">Youtube Clips</Link>
           </Button>
           <Button asChild variant="ghost">
             <Link href="/">Back to home</Link>

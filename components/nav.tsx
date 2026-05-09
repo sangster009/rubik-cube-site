@@ -21,7 +21,8 @@ import { Logo } from "@/components/logo";
 const navItems = [
   { href: "/", label: "Home" },
   { href: "/solve/3x3", label: "Solve 3×3" },
-  { href: "/weekly", label: "Videos" },
+  { href: "/weekly", label: "Youtube Clips" },
+  { href: "/analyze", label: "Solve lab" },
   { href: "/about", label: "About Micah" },
   { href: "/subscribe", label: "Subscribe" },
 ];

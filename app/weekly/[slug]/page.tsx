@@ -44,7 +44,7 @@ export default async function WeeklySlugPage({
     <div className="container px-4 py-8">
       <div className="mx-auto max-w-3xl">
         <Button asChild variant="ghost" size="sm" className="mb-6 -ml-2">
-          <Link href="/weekly">← Videos</Link>
+          <Link href="/weekly">← Youtube Clips</Link>
         </Button>
 
         <div className="aspect-video w-full overflow-hidden rounded-lg border bg-muted">
@@ -80,7 +80,7 @@ export default async function WeeklySlugPage({
 
         <div className="mt-8">
           <Button asChild variant="outline">
-            <Link href="/weekly">More videos</Link>
+            <Link href="/weekly">More Youtube Clips</Link>
           </Button>
         </div>
       </div>
